@@ -1,0 +1,162 @@
+# Feedback
+
+## Methodology
+
+After completing their final exam, all 350 ECON342 students at the University of Liverpool were invited to participate in the anonymous, voluntary, online survey available at: https://liverpool.onlinesurveys.ac.uk/lightboard-survey. No incentives were offered for completing it. As of `r format(Sys.time(), "%d %B %Y")`, students have been sent two follow-up emails reminding them of the survey.
+
+After reading a participant information sheet and completing a consent form, students are presented with 26 questions. The first 16 questions are Likert-scale questions on their perceptions about the lightboard videos. Each set of questions is separated into three broad categories---understanding, engagement and satisfaction---and are adapted from @Sturges2009 and @Rogers2019. Following these quantitative questions, students are also asked five open-ended short-answer questions on their experience learning from a lightboard in a flipped classroom setting. All five questions are adapted from @Rogers2019. The survey concludes by asking students to answer five questions about themselves: their degree programme, year of study, gender, nationality and age.
+
+## Results
+
+```{r, results='asis'}
+# These are assertions I make in the text that I need to be sure still hold if I update the data.
+assert("ASSERTION: EVERYONE IS IN THEIR LAST YEAR OF STUDY FAILS", ifelse(data$q24!="Other", data$q24==3, data$q24a==4))
+assert("ASSERTION: EVERYONE ECON OR ECON+ FAIL", nrow(subset(data, subset=q23=="Other"|q23=="Economics with politics"|q23=="Economics with year in industry"|q23=="Philosophy, politics and economics")) + nrow(subset(data, subset=q23=="Economics")) == nrow(data))
+assert("ASSERTION: EVERYONE 17-25 FAILS", data$q27=="17–25"|is.na(data$q27))
+assert("ASSERTION: NATIONALITY DISTRIBUTION FAILS", data$q26=="China"|data$q26=="Europe (non-EU)"|data$q26=="UK"|data$q26=="EU")
+```
+
+As of `r format(Sys.time(), "%d %B %Y")`, `r nrow(data)` students have responded, representing a `r round(100*nrow(data)/350, digits=1)` percent response rate. The response rate is reasonable, but may have been depressed by two factors: (i) the survey was initially distributed in the middle of exam week; (ii) reminders sent after that may have been ignored given ECON342 had ended.
+
+The majority of respondents (`r round(100*nrow(subset(data, subset=q23=="Economics"))/nrow(data), digits=0)` percent) are BSc Economics students; `r words(nrow(subset(data, subset=q23=="Other"|q23=="Economics with politics")))` are completing an honours degree that combines economics and another subject (*e.g.*, politics or philosophy). All responding students are in their final year of study.
+
+As for demographics, `r round(100*nrow(subset(data, subset=q25=="Female"))/nrow(data), digits=0)` percent of responding students are female and all are between 17--25 years of age. Nationality-wise, most are from China (`r round(100*nrow(subset(data, subset=q26=="China"))/nrow(data), digits=0)` percent); `r round(100*nrow(subset(data, subset=q26=="UK"))/nrow(data), digits=0)` percent are from the UK; the remaining `r words(round(100*nrow(subset(data, subset=q26=="Europe (non-EU)"|q26=="EU"))/nrow(data), digits=0))` percent are from other European countries. Respondents' gender, age and nationality distributions are roughly equivalent to corresponding distributions across the entire population of ECON342 students.
+
+### Quantitative analysis
+
+Figure \@ref(fig:Histogram) displays histograms of responses to each of the 16 Likert-scale questions on students' perceptions about the use of lightboard videos in ECON342. All data analysis was conducted in R.
+
+(ref:response-histogram-caption) Histograms of students' responses about the use of lightboard videos in ECON342
+
+```{r Figure 3, fig.align="center", fig.cap="(ref:response-histogram-caption)", fig.fullwidth=TRUE, fig.note="(ref:response-histogram-note)", label="Histogram", fig.path='0-images/'}
+tdata <- data %>% 
+  select(q02:q17) %>% 
+  pivot_longer(cols=starts_with("q"), names_to="question", values_to="answer") %>%
+  drop_na(answer)
+
+question.labs <- c(
+  "The videos were easy\nto watch & understand",
+  "The videos help me visualise\nthe problem solving process",
+  "The videos helped identify\nmajor problem solving points",
+  "Handwritten notations helped\nme understand the material",
+  "Overall, the lightboard videos\nimproved my understanding",
+  "Their interactive nature made\nthe videos easy to follow",
+  "The length of the videos\nwas appropriate",
+  "Watching the videos was an\neffective use of my time",
+  "The lightboard engages\nstudents in online learning",
+  "Overall, the lightboard\nvideos were engaging",
+  "I found the videos\ninteresting and stimulating",
+  "The videos' technology is\nattractive (style-wise)",
+  "The videos are an effective\ntool for learning economics",
+  "I'd recommend more lightboard\n videos (LVs) for this module",
+  "I'd recommend more LVs\n for other economics modules",
+  "I'd recommend more LVs\n for non-economics modules"
+  )
+names(question.labs) <- c("q02", "q03", "q04", "q05", "q06", "q07", "q08", "q09", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17")
+
+ggplot(tdata, aes(x=answer, fill=answer)) +
+  geom_histogram(alpha=0.6, stat="count") +
+  facet_wrap(~question, labeller = labeller(question = question.labs)) +
+  labs(x=NULL, y=NULL) +
+  scale_fill_manual(values = c("#a10532", "#ff6fa9", "#ffd0cc", "#00b7cc", "#005f81")) +
+  theme(
+    panel.spacing=unit(0.1, "lines"),
+    strip.text.x = element_text(size=8),
+    axis.text.x = element_blank(),
+    strip.background = element_rect(fill="grey95"),
+    strip.text = element_text(colour="black", size=6),
+    panel.grid.major=element_blank(),
+    axis.ticks.x=element_blank()
+  )
+```
+
+(ref:response-histogram-note) Figure displays histograms of responses to each of the 16 Likert-scale questions on students' perceptions about the use of lightboard videos in ECON342.
+
+The first five questions relate to understanding---*i.e.*, they sought information on how and whether students perceived that the lightboard contributed to their understanding of the underlying material. Across all five questions, the most popular answer was "strongly agree", indicating that students consider that the lightboard videos improved their understanding. Students saw the ability to see the instructor's handwritten notations to be particularly helpful for their overall understanding.
+
+The following five questions focused on engagement---and specifically whether students thought that lightboard videos helped them engage with the lecturer and the material. Again, the majority of students "strongly agreed" with each question. Of particular interest, over `r round(100*nrow(subset(data, subset=q07=="Strongly agree"|q07=="Agree"))/nrow(data), digits=0)` percent of respondents "strongly agreed" or "agreed" that the interactive nature of the lightboard videos made them easy to follow; `r round(100*nrow(subset(data, subset=q10=="Strongly agree"|q10=="Agree"))/nrow(data), digits=0)` percent agreed or strongly agreed that the videos engaged them in online learning.
+
+The remaining six questions probed how satisfied students were with the lightboard videos. Results in this section were slightly more variable---the average standard deviation of responses to the first ten questions was `r round(mean(sapply(subset(data, select=q02:q11), FUN=function(x) sd(as.numeric(x), na.rm=TRUE))), digits=2)` but it was `r round(mean(sapply(subset(data, select=q12:q17), FUN=function(x) sd(as.numeric(x), na.rm=TRUE))), digits=2)` for the six satisfaction questions.^[To calculate standard deviations and means, I assigned 1 to "strongly disagree" responses, 2 to "disagree" response, *etc.*] In general, students found the videos interesting/stimulating, attractive and effective for learning economics. They are slightly more likely to recommend additional lightboard videos for ECON342 (mean `r round(mean(as.numeric(data$q15), na.rm=TRUE), digits=2)`; standard deviation `r round(sd(as.numeric(data$q15), na.rm=TRUE), digits=2)`) than they are to recommend lightboard videos for other economics modules (mean `r round(mean(as.numeric(data$q16), na.rm=TRUE), digits=2)`; standard deviation `r round(sd(as.numeric(data$q16), na.rm=TRUE), digits=2)`) and non-economics modules (mean `r round(mean(as.numeric(data$q17), na.rm=TRUE), digits=2)`; standard deviation `r round(sd(as.numeric(data$q17), na.rm=TRUE), digits=2)`).
+
+### Qualitative analysis
+
+The second part of the perception survey includes five open-ended questions that investigate students' perceptions of the flipped classroom. Table \@ref(tab:qualitative) provides a representative sample of the responses students gave. (Note that some responses may have been combined with similar responses, paraphrased and/or edited for typos, grammatical mistakes and identifying information.)
+
+```{r, results='hide'}
+tdata <- data %>% 
+  select(q18:q22) %>% 
+  pivot_longer(cols=starts_with("q"), names_to="Question", values_to="Response") %>%
+  drop_na(Response) %>%
+  mutate(Response = str_trim(Response)) %>%
+  distinct() %>%
+  arrange(Question)
+tdata$Question <- plyr::mapvalues(tdata$Question, from=c("q18", "q19", "q20", "q21", "q22"), to=c("What did you like most about the `flipped classroom' (FC) approached used for ECON342?", "Was there anything about the FC that you did not like?", "If you could offer one suggestion to improve the FC learning experience, what would it be?", "In what ways has the FC helped you learn this semester?", "In what ways did the FC not help you learn this semester?"))
+
+kable(tdata, longtable=TRUE, booktabs=TRUE, label="qualitative", linesep="", caption="Qualitative data") %>%
+  column_spec(2, width="12cm") %>%
+  column_spec(1, width="3cm") %>%
+  collapse_rows(columns = 1, latex_hline="major", valign="top")
+```
+
+\begin{ThreePartTable}
+\footnotesize
+\begin{TableNotes}
+\item \textit{Note}. Table contains responses to the five open-ended questions in the survey. Note that some responses may have been combined with similar responses, paraphrased and/or edited for typos, grammatical mistakes and identifying information.
+\end{TableNotes}
+\begin{longtable}{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{12cm}}
+  \caption{Qualitative data} \label{tab:qualitative} \\
+  \toprule
+  Question&Response\\
+  \midrule
+  \multirow{1}{3cm}{What did you like most about the `flipped classroom' (FC) approached used for ECON342?} & The lightboard made it easier to understand the working out process. I could follow step-by-step as the instructor worked out examples, derivations and proofs.\\
+  &I loved the online lectures and how they were recorded using a board. They were so helpful!\\
+  & The lightboard is very flexible.\\
+  &I can clearly see the procedure and contents on the lightboard, which I am not always able to do in a face-to-face classroom setting, especially when I sit far from the board.\\
+  &Short 10--30-minute videos with the glass board displays are more engaging than long 1--2 hour slideshows with voice-over recordings. Accompanying notes with videos are helpful for clarification.\\
+  &The videos were so helpful and easy to understand. It felt like a real lecture and was very engaging.\\
+  &I found this new approach to learning really interesting and fun. It's more efficient than the normal way of online teaching. I can understand the diagrams and theories more directly and quickly.\\
+  &I like how the videos can be watched again and again.\\
+  &I found I learned more effectively and logically.\\
+  &I liked how I could see the lecturer's face.\\
+  &I thought the videos were interesting and intuitive and easy to understand.\\
+  &The flipped classroom environment is efficient. I think it is easier to follow than a presentation format and more engaging.\\
+  &I thought this class was the closest we got to an actual classroom learning environment and I like that. It's better than PowerPoint presentations because the instructor was able to point and highlight specific things on the lightboard and the viewers are able to see the problem progress as she drew it out in front of us.\\
+  &This was without a doubt the best module and the best taught module in my 3 years at university.\\
+  &I liked how I was able to see the problem solving process in action rather than as steps on a paper.\\
+  &I thought the lightboard made teaching more vivid.\\
+  &I found the videos simple and easy to follow. The solutions to problems are very clear and easier to understand in the flipped classroom environment.\\
+  &The lightboard allowed us to visualise the problem in a more elegant manner than most economics modules.\\
+  \midrule
+  \multirow{1}{3cm}{If you could offer one suggestion to improve the FC learning experience, what would it be?} & Make sure all information written on the lightboard is visible to the camera.\\
+  &The lecturer spoke quickly and it is difficult for non-native speakers to follow.\\
+  &It would be easier for the students to find the content they want to review if there are text nodes on the video progress bar indicating the content of the next section of the video.\\
+  &Watching the lecturer wipe the board is tedious.\\
+  &When we move back to face-to-face teaching, continue using the lightboard for problem sets and worked examples (but have live lectures).\\
+  &Please make a word or PDF version of the notes available so that I can print them and take notes on them.\\
+  &There were a few audio errors and the different coloured pens were not always distinguishable.\\
+  \midrule
+  \multirow{1}{3cm}{In what ways has the FC helped you learn this semester?} & The lightboard made it easier to go through calculations. I also actually got to see the lecturer so it was similar to a real lecture setting.\\
+  &The pre-recorded lectures are fantastic. The lightboard makes the difficult content digestible.\\
+  &This module was more engaging than other modules. I found I paid more attention compared to other instructors who just talked over their slides.\\
+  &I liked how I can interact with the lecturer's facial expressions and body language, which helped me concentrate more.\\
+  &I appreciated how I could repeat parts of lectures. I feel I understood the content better because it was presented in a much clearer, helpful way.\\
+  &This is an alternative to having classes face-to-face. I thought it was really interesting and efficient.\\
+  &I feel I understood the content of the module more deeply.\\
+  &I think both the accompanying articles and videos improved how efficiently I was able to learn the material.\\
+  &The lightboard videos made it easier to follow the tutor's logic step-by-step.\\
+  &The detailed explanations of the lecture content and seminar questions really helped me.\\
+  &The videos were detailed and well-explained, and the ability to rewind a section is very nice as it allows me to repeat a section in order to better understand it.\\
+  &I think the lightboard videos made it easier for me to pick up the intuition behind the process.\\
+  &The video is vivid and therefore more engaging because I can see the instructor teaching on-screen.\\
+  &I think the lightboard videos helped me focus more when I study.\\
+  &The lightboard videos have helped me understand some tricky problems that the textbooks were not fully clear on.\\
+  \midrule
+  \multirow{1}{3cm}{In what ways did the FC not help you learn this semester?} & Sometimes the videos were hard to follow because the instructor's handwriting would go off camera.\\
+  &The module is very difficult so it would also have been good to have some on-campus face-to-face content. I struggled to follow the content besides the specific examples the lecturer worked through. This made the exam extremely difficult for me compared to all other modules I've done at university.\\
+  &It's hard to interact with other students.\\
+  &I thought the class focussed too much on problem solving without giving anecdotal evidence as to how the problem related to the field of economics both theoretically and in real world settings.\\
+  &The surface area of the lightboard is too small.\\
+  \bottomrule
+  \insertTableNotes
+\end{longtable}
+\end{ThreePartTable}

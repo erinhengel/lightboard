@@ -1,0 +1,55 @@
+---
+title: "Let there be light!"
+subtitle: "Using a lightboard in an active learning environment during COVID-19"
+author:
+  - name: "Erin Hengel"
+    affiliation: "University of Liverpool"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+acknowledgements: "This is the final project submitted for ADEV701. Please direct all correspondence to erin.hengel@gmail.com."
+abstract: |
+  This study describes a small-scale lightboard pilot and build with accompanying at-home studio for an advanced undergraduate course in microeconomic theory taught at the University of Liverpool during the first term of the 2020–2021 academic year. This article will provide an overview of the lightboard literature in higher education, describe the author's experience constructing and teaching with a lightboard and report results from a survey of students on how they perceived learning with a lightboard. We believe our study will be useful to educators looking to implement a flipped classroom environment while dealing with the stay-at-home requirements imposed by the COVID-19 pandemic.
+output:
+  bookdown::pdf_document2:
+    template: 0-templates/paper.tex
+    latex_engine: xelatex
+    citation_package: biblatex
+    keep_tex: no
+bibliography: 0-bib/lightboard.bib
+link-citations: true
+knit: (function (...) { source('0-code/myknit.R'); myknit(...) })
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+# Document set-up
+source('0-code/paper-setup.R')
+
+# Import data
+data <- read_excel(
+  "0-data/results.xlsx",
+  col_names = c("q01", "q02", "q03", "q04", "q05", "q06", "q07", "q08", "q09", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20", "q21", "q22", "q23", "q23a", "q24", "q24a", "q25", "q26", "q26a", "q27"),
+  skip = 1
+) %>%
+  select(-q01) %>%
+  filter_all(any_vars(!is.na(.)))
+
+data[, 1:16] <- lapply(data[, 1:16], function(x) factor(x, levels = c("Strongly disagree", "Disagree", "Neutral", "Agree", "Strongly agree")))
+```
+
+```{r child = '1-introduction.Rmd'}
+```
+
+```{r child = '2-case-study.Rmd'}
+```
+
+```{r child = '3-feedback.Rmd'}
+```
+
+```{r child = '4-discussion.Rmd'}
+```
+
+```{r child = '5-conclusion.Rmd'}
+```
+
+# References {-}
+
+\printbibliography[heading=none]

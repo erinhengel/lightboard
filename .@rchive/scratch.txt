@@ -1,0 +1,115 @@
+Given the COVID-19 situation, it was decided that during the first term of the 2020–21 academic year, ECON342 would enact a "hybrid active learning" (HAL) model. University of Liverpool's HAL model involves two key components: (i) all materials on key content would be made available online in asynchronous "chunks"; and (ii) students would engage in additional online seminar/tutorial sessions with the lecturer.
+
+
+
+
+The course has both lecture and seminar components. The content of the course can be seen in Table I. Course material consists of three modules, each of which takes roughly 2–4 weeks to complete. In the first module, "The jungle vs. the market", you will be presented with two competing yet conceptually very similar methods of economic organisation: the so-called "jungle economy" and the more familiar "market economy". The second module is devoted entirely to a fuller appreciation of market exchange. In the third and final module, we investigate equilibrium with asymmetric information, where we discuss adverse selection, moral hazard and introduce agency theory. The course itself is heavily math-intensive although it relies a lot on students engaging in self-directed learning and reflection to interpret the underlying economic intuition of the maths.
+
+
+
+
+
+After examining several alternatives that could help me re-create my classroom experience online, I eventually settled on using a lightboard. I found it easier to create videos using the lightboard than videotaping me writing out equations on a whiteboard, and it allowed me to face students, which has been found to facilitate a more engaging student experience (CITATION).
+
+
+
+The lightboard is a sheet of glass illuminated by light that, when written on using florescent pens, makes writing glow. It is often proposed as  in conjunction with a "flipped classroom" environment
+
+This study describes a small-scale lightboard pilot and build with accompanying at-home studio for a third-year course taught at the University of Liverpool during the first term of the 2020–2021 academic year. This article will provide an overview of the lightboard landscape in higher education, offer considerations for the construction of a lightboard, share the authors' experiences and outcomes and report the quantitative and qualitative results of a survey of students' experiences.
+
+ The lightboard is a low-technology solution for recording instructional videos where the focus is on writing or drawing. The "talent" stands on one side of the glass while a camera records them from the other side. The video is then mirror-flipped using computer software.
+
+Despite the futuristic look and feel of illuminated annotating and writing, the most basic lightboard video setup is very low-technology. This has make them a popular means of facilitating the traditional talk-and-chalk method of lecturing while lecturing activity has been moved online during the COVID-19 pandemic: a lightboard video can be recorded by simply turning off the lights in one's home or office, resulting in a video consisting of the lecturer's voice accompanied by their writing and annotation in the dark.
+
+
+In a typical flipped classroom, students learn at their own pace through pre-recorded video lectures outside class. Subsequently, problem solving activities are conducted during class to consolidate knowledge and help educators identify and address the difficulties students face, thereby enhancing the student's learning.
+
+A key feature of the flipped classroom approach is self-directed learning, where students are constantly engaged in the learning process rather than being passive learners. Typical pre-recorded video lectures for the purposes of flipped classrooms comprise the lecturer presenting on a whiteboard or narrated PowerPoint slides. In this aspect, students are active learners because they have the freedom to explore the lecture material at their own pace and have complete ownership over their learning. We believe that the active learning aspect of this portion of the flipped classroom can be enhanced by presenting the lecture material using a lightboard.
+
+
+
+This article will provide an overview of the lightboard landscape in higher education, offer considerations for the construction of a lightboard, share the authors' experiences and outcomes and report the quantitative and qualitative results of a survey of students' experiences. 
+
+It is believed that the results of this study will be useful to educators looking to implement a flipped classroom environment while dealing with the stay-at-home requirements imposed by the COVID-19 pandemic.
+
+
+In order to spend the least amount of money possible, I used regular lighting I already had available at home. First, I attached a small book light to the top of the board to light my face. On the right-hand side I set up a free-standing anglepoise lamp and on the left-hand side I situated an anglepoise desk lamp on a stand about 3 feet off of the ground (left-hand photo in Figure \@ref(fig:lightboard)). The anglepoise lamps allowed me to mimic somewhat barn-door lighting---*i.e.*, by focusing (to some degree) the light and limit it from bleeding out of the sides.
+
+
+Most video editing software allows you to adjust the overall exposure as well as target it specifically at a very specific location on the video using a shape mask. I suggest first 
+
+Unless your lightboard videos were filmed into a mirror, the 
+
+As far as post-production, it's actually very easy. I initially used the 90-day trial version of Apple's Final Cut Pro because it was the only video editing software I was aware of. I ended up very much enjoy the post-production component of making videos—and do far more than is necessary—and therefore eventually upgraded to the full version (£299). However, everything I describe in this section can be similarly done using free video editing software such as Camtasia Studio. They include:
+
+- flip the video so that the writing isn't backwards;
+
+- add a sound compressor in order to improve the quality of a sound
+
+- adjust the shadows a little big in order to eliminate entirely the larger scratches and smudges on the glass.
+
+- Add an intro with some music—this is a benefit of using Final Cut Pro because it has a bunch of intros that are pre-packaged with the videos.
+
+- There are times when I need to erase the board, so I speed that up so that students don't have to spend a minute and a half of watching me wipe it clean.
+
+- Most video editing software will produce a very large file size so as a final step, I reduce the file size using the free software Handbrake.
+
+
+5. **Exploit "fast-forward" post-production**. If you wipe the board while filming, I suggest speeding it up to 8x or 20x speed. It requires only a minimal amount of post-production effort and is less jarring than cutting out the portion entirely.
+
+6. **Add an intro**. Adding an introduction with music and graphics is very easy to do with most video editing software—indeed, software like Adobe Premier Pro and Final Cut Pro come with a large number of introduction template generators that can be combined with short music clips to create a fun and attractive introduction to your videos.
+
+7. **Apply a sound compressor**. Most video editing software has a function that emulates the sound and response of a professional-level analog compressor—e.g., the "the compressor effect" in Final Cut Pro. Applying custom or preset settings (e.g., "Vocal Compressor 01" in Final Cut Pro) will greatly enhance your audio by reducing background noise and increasing the volume of and brining into focus the sound of your voice.
+
+
+
+<!-- \begin{longtable} -->
+<!-- \centering -->
+<!-- \begin{threeparttable} -->
+<!--   \caption{\label{tab:qualitative}Qualitative data} -->
+<!--   \small -->
+<!--   \begin{tabular}{>{\raggedright\arraybackslash}p{15cm}} -->
+<!--     \toprule -->
+<!--     \textbf{What did you like most about the flipped classroom approached used for ECON342?}\\ -->
+<!--       \quad The lightboard made it easier to understand the process for working out derivations, proofs and worked examples. It allowed the instructor flexibility and also made it easier for me as a student to follow her logic and thought process.\\ -->
+<!--       \quad I loved the online lectures and how they were recorded using a lightboard. They were so helpful! I especially liked how I could see the lecturer's face while she was writing---this isn't possible in a normal classroom setting with a chalkboard.\\ -->
+<!--       \quad I liked how I can clearly see the procedure and contents on the light board, which isn't always possible if I sit far from the board in a face-to-face class.\\ -->
+<!--       \quad I enjoyed the short 10 to 30-minute videos with the glass board display and found them more engaging than a long 1--2 hour slideshow with voice-over recordings. I also very much appreciated the notes that accompanied the videos as they made it easy to clarify things I didn't get the first time by watching the videos. I especially appreciated how the videos can be watched again and again.\\ -->
+<!--       \quad I found the lightboard videos helpful, very intuitive and easy to understand. They felt like real lectures and were very engaging!\\ -->
+<!--       \quad This new approach of learning is really interesting and fun. It is more efficient than the normal way of online teaching. I can understand the diagrams and theories more directly and quickly; knowledge seems to be conveyed more effectively and logically.\\ -->
+<!--       \quad I found this format is the closest we can get to an actual classroom learning experience, and I like that. I think the lightboards are better than PowerPoint because the instructor is able to point and highlight specific parts of the thing being discussed. As a viewer, we are also able to see the problem progress as you draw it out in front of us.\\ -->
+<!--       \quad This was without a doubt the est module and the best taught module in my three years at university. I especially liked how you could see the problem-solving process in action rather than as steps on a page. I think that makes the teaching process more vivid.\\ -->
+<!--     \midrule -->
+<!--     \textbf{Was there anything about the flipped classroom that you did not like?}\\ -->
+<!--       \quad It's not really a big deal, but the colour of the coloured pens rarely showed up.\\ -->
+<!--       \quad While I very much liked the lightboard videos, I hope the University of Liverpool doesn't continue to use distance learning when it's safe for face-to-face teaching to resume! University is as much about the social experience of being on campus---including for lectures!---as it is about learning in a classroom.\\ -->
+<!--       \quad The course content was initially distributed to us module-by-module instead of in week-by-week chunks, so I found it harder to structure my time. Later on, the lecturer made a syllabus that identified exactly which videos, texts and problems should be completed each week. I liked this much better.\\ -->
+<!--       \quad The lecturer sometimes used difficult or uncommon words. In a face-to-face classroom setting I would have asked her directly what she meant by those words, but I couldn't do that when watching the videos in my own time.\\ -->
+<!--       \quad Sometimes I found it hard to read the notation because of how small it was or that a letter the instructor wrote out was similar to other letters.\\ -->
+<!--       \quad Overall the videos were great but minor details such as different colours not showing up and also the noise of the squeaking of the board marker was sometimes uncomfortable if the microphone was too close (this was very rare). These problems are very small and did not effect my learning.\\ -->
+<!--       \quad Sometimes the video‘s brightness is a little low.\\ -->
+<!--     \midrule -->
+<!--     \textbf{If you could offer one suggestion to improve the flipped classroom learning experience, what would it be?}\\ -->
+<!--       \quad I would like to receive PowerPoint presentations before class so I can make notes on them.\\ -->
+<!--       \quad It would be better if the area of the lightboard were larger. Sometimes something the lecturer wrote on the board was hard to see because it was partly off-camera.\\ -->
+<!--       \quad After we return to face-to-face teaching, I think these videos should be continued for work examples, only and not for explaining lecture content.\\ -->
+<!--     \midrule -->
+<!--     \textbf{In what ways has the flipped classroom helped you learn this semester?}\\ -->
+<!--       \quad I thought the lightboard made it easier to go through and understand calculations and follow the lecturer's logic step-by-step. I also though it was great how we could see the lecturer. It made the videos seem closer to a real lecture setting.\\ -->
+<!--       \quad The pre-recorded lectures are fantastic. The lightboard makes the difficult content digestible. I especially liked how the videos allowed me to repeat parts of lectures. All-in-all, I feel they helped me understand the content in a much clearer, helpful way.\\ -->
+<!--       \quad ECON342 was more engaging than other modules. I found I paid more attention compared to others who just talked over slides.\\ -->
+<!--       \quad I liked how I can interact with the lecturer’s facial expressions and body language, which helped me concentrate on the material more. I also thought the readings and videos improved learning efficiency. In general, the lightboard videos are an alternative to having classes face-to-face. I think they made learning for this course really interesting and efficient.\\ -->
+<!--       \quad The video is vivid because I can see the lecturer on screen as she is teaching. It makes me more focused when I study and easier to pick up the intuition behind the process.\\ -->
+<!--       \quad The videos were detailed and well explained and the ability to rewind a section is very nice as it allows you to repeat a section to better understand it.\\ -->
+<!--     \midrule -->
+<!--     \textbf{In what ways did the flipped classroom environment \textit{not} help you learn this semester?}\\ -->
+<!--       \quad The module is very difficult. It would have been easier to learn many things if we had also had face-to-face interaction with the lecturer on campus.\\ -->
+<!--       \quad Struggled to follow the content other than the specific examples given. This made the exam extremely difficult for me compared to all other modules I’ve done at university.\\ -->
+<!--     \bottomrule -->
+<!--   \end{tabular} -->
+<!--     \begin{tablenotes} -->
+<!--       \footnotesize -->
+<!--       \textit{Note}. Table contains reponses to the five open-ended questions in the survey. Note that some responses may have been combined with similar responses, paraphrased and/or edited for typos, grammatical mistakes and identifying information. -->
+<!--     \end{tablenotes} -->
+<!-- \end{threeparttable} -->
+<!-- \end{longtable} -->
